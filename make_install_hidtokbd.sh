@@ -1,6 +1,8 @@
 #!/bin/bash
 echo "compiling.."
 make SUBDIRS=drivers/hid/usbhid CONFIG_USB_KBD=m modules
-echo "installing and linking.."
+echo "installing.."
 insmod drivers/hid/usbhid/usbkbd.ko
-./hid_to_kbd.sh
+echo "linking to new driver.."
+echo -n "1-2:1.0" > /sys/bus/usb/drivers/usbhid/unbind
+echo -n "1-2:1.0" > /sys/bus/usb/drivers/usbkbd/bind
