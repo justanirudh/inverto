@@ -1,0 +1,6 @@
+1. attach the keyboard to the host
+2. make it visible to the VM by going to devices->select keyboard
+3. after connecting, compare the output of dmesg related to the port number of the added keyboard with the bindings in /sys/bus/hid/drivers/hid-generic. This will give you the port number. For my case, it was 1-2:1.0
+4. download the usbkbd.c file and place it in ~/linux-source-3.16/drivers/hid/usbhid
+5. run the script make_install_hidtokbd.sh in the linux-source-3.16 folder. This script makes the usbkbd folder, installs the driver and switches from hid driver to usbkbd driver using the port number deduced in step 3.
+6. The modified kbd driver is ready to be used.
