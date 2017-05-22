@@ -1,4 +1,5 @@
 #!/bin/bash
+#run this script from source directory (linux-source-3.16)
 echo "compiling.."
 make SUBDIRS=drivers/hid/usbhid CONFIG_USB_KBD=m modules
 echo "installing.."
